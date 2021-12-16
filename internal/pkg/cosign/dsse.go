@@ -22,8 +22,9 @@ import (
 	"github.com/sigstore/cosign/pkg/oci"
 )
 
-// Signer signs payloads in the form of `oci.Signature`s
-type Signer interface {
-	// Sign signs the given payload, returning the results as an `oci.Signature` which can be varified using the returned `crypto.PublicKey`.
-	Sign(ctx context.Context, payload io.Reader) (oci.Signature, crypto.PublicKey, error)
+// DSSEAttestor creates attestations in the form of `oci.Signature`s
+type DSSEAttestor interface {
+	// Attest creates an attestation, in the form of an `oci.Signature`, from the given payload.
+	// The signature and payload are stored as a DSSE envelope in `osi.Signature.Payload()`
+	DSSEAttest(ctx context.Context, payload io.Reader) (oci.Signature, crypto.PublicKey, error)
 }

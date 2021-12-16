@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package ephemeral
+package payload
 
 import (
 	"bytes"
@@ -22,14 +22,25 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/sigstore/cosign/pkg/cosign"
 	"github.com/sigstore/sigstore/pkg/signature"
 )
 
-func TestEphemeralSigner(t *testing.T) {
-	testSigner, err := NewSigner()
+func mustGetNewSigner(t *testing.T) signature.Signer {
+	t.Helper()
+	priv, err := cosign.GeneratePrivateKey()
 	if err != nil {
-		t.Fatalf("NewSigner() returned error: %v", err)
+		t.Fatalf("cosign.GeneratePrivateKey() failed: %v", err)
 	}
+	s, err := signature.LoadECDSASignerVerifier(priv, crypto.SHA256)
+	if err != nil {
+		t.Fatalf("signature.LoadECDSASignerVerifier(key, crypto.SHA256) failed: %v", err)
+	}
+	return s
+}
+
+func TestSigner(t *testing.T) {
+	testSigner := NewSigner(mustGetNewSigner(t))
 
 	testPayload := "test payload"
 
@@ -53,8 +64,16 @@ func TestEphemeralSigner(t *testing.T) {
 		t.Fatalf("base64.StdEncoding.DecodeString(b64Sig) returned error: %v", err)
 	}
 
-	err = verifier.VerifySignature(bytes.NewReader(sig), strings.NewReader(testPayload))
+	gotPayload, err := ociSig.Payload()
 	if err != nil {
-		t.Fatalf("VerifySignature() returned error: %v", err)
+		t.Fatalf("ociSig.Payload() returned error: %v", err)
+	}
+
+	if string(gotPayload) != testPayload {
+		t.Errorf("ociSig.Payload() returned %q, wanted %q", string(gotPayload), testPayload)
+	}
+
+	if err = verifier.VerifySignature(bytes.NewReader(sig), bytes.NewReader(gotPayload)); err != nil {
+		t.Errorf("VerifySignature() returned error: %v", err)
 	}
 }
