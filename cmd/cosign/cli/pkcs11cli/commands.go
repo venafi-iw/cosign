@@ -25,9 +25,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/miekg/pkcs11"
 	"github.com/pkg/errors"
-	"github.com/sigstore/cosign/pkg/cosign/pkcs11key"
+	"github.com/venafi-iw/cosign/pkg/cosign/pkcs11key"
+	"github.com/venafi-iw/pkcs11"
 	"golang.org/x/term"
 )
 
