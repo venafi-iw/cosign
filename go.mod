@@ -1,11 +1,10 @@
-module github.com/sigstore/cosign
+module github.com/venai-iw/cosign
 
 go 1.16
 
 require (
 	cloud.google.com/go/storage v1.18.2
 	cuelang.org/go v0.4.0
-	github.com/ThalesIgnite/crypto11 v1.2.5
 	github.com/cyberphone/json-canonicalization v0.0.0-20210823021906-dc406ceaf94b
 	github.com/go-openapi/runtime v0.21.0
 	github.com/go-openapi/strfmt v0.21.1
@@ -19,7 +18,6 @@ require (
 	github.com/google/trillian v1.4.0
 	github.com/in-toto/in-toto-golang v0.3.4-0.20211211042327-af1f9fb822bf
 	github.com/manifoldco/promptui v0.9.0
-	github.com/miekg/pkcs11 v1.0.3
 	github.com/open-policy-agent/opa v0.35.0
 	github.com/pkg/errors v0.9.1
 	github.com/secure-systems-lab/go-securesystemslib v0.3.0
@@ -47,6 +45,8 @@ require (
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.0.0-beta.10
 	github.com/urfave/cli v1.22.5 // indirect
+	github.com/venafi-iw/crypto11 v1.2.6-0.20211225061814-3ff7f9fdf5a4 // indirect
+	github.com/venafi-iw/pkcs11 v1.0.5-0.20211225061219-423709ea75b3 // indirect
 	go.opentelemetry.io/contrib v1.3.0 // indirect
 	go.opentelemetry.io/proto/otlp v0.11.0 // indirect
 	k8s.io/klog/v2 v2.30.0 // indirect
