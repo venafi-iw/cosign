@@ -30,10 +30,10 @@ import (
 	"github.com/sigstore/cosign/pkg/cosign/git"
 	"github.com/sigstore/cosign/pkg/cosign/git/gitlab"
 	"github.com/sigstore/cosign/pkg/cosign/kubernetes"
-	"github.com/sigstore/cosign/pkg/cosign/pkcs11key"
 	"github.com/sigstore/sigstore/pkg/cryptoutils"
 	"github.com/sigstore/sigstore/pkg/signature"
 	"github.com/sigstore/sigstore/pkg/signature/kms"
+	"github.com/venafi-iw/cosign/pkg/cosign/pkcs11key"
 )
 
 // LoadPublicKey is a wrapper for VerifierForKeyRef, hardcoding SHA256 as the hash algorithm
