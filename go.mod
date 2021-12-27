@@ -45,7 +45,7 @@ require (
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.0.0-beta.10
 	github.com/urfave/cli v1.22.5 // indirect
-	github.com/venafi-iw/cosign v1.3.2
+	github.com/venafi-iw/cosign v1.3.3
 	github.com/venafi-iw/crypto11 v1.2.6-0.20211225061814-3ff7f9fdf5a4 // indirect
 	github.com/venafi-iw/pkcs11 v1.0.5-0.20211225061219-423709ea75b3
 	go.opentelemetry.io/contrib v1.3.0 // indirect

@@ -30,10 +30,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ThalesIgnite/crypto11"
-	"github.com/miekg/pkcs11"
 	"github.com/pkg/errors"
 	"github.com/sigstore/sigstore/pkg/signature"
+	"github.com/venafi-iw/crypto11"
+	"github.com/venafi-iw/pkcs11"
 	"golang.org/x/term"
 )
 
