@@ -52,10 +52,10 @@ import (
 
 	// Import the functions directly for testing.
 
+	"github.com/miekg/pkcs11"
 	. "github.com/sigstore/cosign/cmd/cosign/cli/pkcs11cli"
 	"github.com/sigstore/cosign/pkg/cosign/pkcs11key"
 	"github.com/stretchr/testify/require"
-	"github.com/venafi-iw/pkcs11"
 )
 
 var (
